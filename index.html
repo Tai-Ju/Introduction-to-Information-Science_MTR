@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TDM Interactive EDA Dashboard</title>
+    <style>
+        /* (CSS 樣式保持不變) */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            max-width: 1500px; 
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 { text-align: center; color: #2c3e50; font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #7f8c8d; font-size: 1.2em; margin-bottom: 30px; }
+        .info-box { background: #ecf0f1; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .feature { padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; text-align: center; }
+        .nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .nav-btn { padding: 12px 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .nav-btn.active { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .chart-container { display: none; margin-top: 20px; }
+        .chart-container.active { display: block; }
+        .drug-legend { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 0.9em; }
+        .drug-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .chart-iframe { width: 100%; border: none; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 TDM Interactive EDA Dashboard</h1>
+        <div class="subtitle">互動式資料探索分析儀表板 - 完整版</div>
+        
+        <div class="info-box">
+            <h2>💡 使用說明</h2>
+            <p>點擊下方按鈕切換不同的互動式圖表。所有圖表都支援:</p>
+            <ul>
+                <li><strong>懸停顯示詳細資訊</strong> - 滑鼠移到圖表上查看數據</li>
+                <li><strong>縮放與平移</strong> - 可以放大、縮小、拖曳圖表</li>
+                <li><strong>選擇與篩選</strong> - 點擊圖例可以隱藏/顯示資料</li>
+                <li><strong>匯出圖片</strong> - 點擊相機圖示可以下載圖表</li>
+            </ul>
+        </div>
+        
+        <div class="features">
+            <div class="feature"><h3>📊 6 個互動圖表</h3><p>涵蓋所有重要分析面向</p></div>
+            <div class="feature"><h3>🎨 3D 視覺化</h3><p>可旋轉的三維散點圖</p></div>
+            <div class="feature"><h3>🎬 動態動畫</h3><p>數據收集過程模擬</p></div>
+            <div class="feature"><h3>🔍 深度互動</h3><p>完全可探索的數據</p></div>
+        </div>
+        
+        <div class="nav">
+            <button class="nav-btn active" onclick="showChart(0)">1️⃣ 缺失值分析</button>
+            <button class="nav-btn" onclick="showChart(1)">2️⃣ 3D 散點圖</button>
+            <button class="nav-btn" onclick="showChart(2)">3️⃣ 數據收集動畫</button>
+            <button class="nav-btn" onclick="showChart(3)">4️⃣ 階層分布圖</button>
+            <button class="nav-btn" onclick="showChart(4)">5️⃣ 平行座標圖</button>
+            <button class="nav-btn" onclick="showChart(5)">6️⃣ 統計檢定力</button>
+        </div>
+        
+        <div id="chart0" class="chart-container active">
+            <iframe src="interactive_missing_analysis.html" class="chart-iframe" height="600"></iframe>
+        </div>
+        
+        <div id="chart1" class="chart-container">
+            <iframe src="interactive_3d_scatter.html" class="chart-iframe" height="950"></iframe> 
+            <div class="drug-legend">
+                <h3>📋 藥物代碼對照表</h3>
+                <p>3D 圖表使用縮寫以保持視覺清晰,完整名稱請參考下表或將滑鼠移到資料點上查看:</p>
+                <div class="drug-table">
+                    <div class="drug-item"><strong>Vanc</strong> = Vancomycin</div>
+                    <div class="drug-item"><strong>Dig</strong> = Digoxin</div>
+                    <div class="drug-item"><strong>Phen</strong> = Phenytoin</div>
+                    <div class="drug-item"><strong>Theo</strong> = Theophylline</div>
+                    <div class="drug-item"><strong>Gent</strong> = Gentamicin</div>
+                    <div class="drug-item"><strong>Li</strong> = Lithium</div>
+                    <div class="drug-item"><strong>Tacro</strong> = Tacrolimus</div>
+                    <div class="drug-item"><strong>Cyclo</strong> = Cyclosporine</div>
+                    <div class.container"><strong>Carba</strong> = Carbamazepine</div>
+                    <div class="drug-item"><strong>VPA</strong> = Valproic Acid</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chart2" class="chart-container">
+            <iframe src="interactive_animation.html" class="chart-iframe" height="700"></iframe>
+        </div>
+        
+        <div id="chart3" class="chart-container">
+            <iframe src="interactive_sunburst.html" class="chart-iframe" height="800"></iframe>
+        </div>
+        
+        <div id="chart4" class="chart-container">
+            <iframe src="interactive_parallel.html" class="chart-iframe" height="700"></iframe>
+        </div>
+        
+        <div id="chart5" class="chart-container">
+            <iframe src="interactive_power_analysis.html" class="chart-iframe" height="700"></iframe> 
+        </div>
+    </div>
+    
+    <script>
+        function showChart(index) {
+            const charts = document.querySelectorAll('.chart-container');
+            charts.forEach(chart => chart.classList.remove('active'));
+            
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById('chart' + index).classList.add('active');
+            btns[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>
