@@ -1,6 +1,12 @@
 # 🎯 TDM Interactive EDA Dashboard
 ## Therapeutic Drug Monitoring - 互動式探索性資料分析儀表板
 
+## 🌐 互動式儀表板
+
+🎯 **Live Demo**：[tai-ju.github.io/Introduction-to-Information-Science_MTR](https://tai-ju.github.io/Introduction-to-Information-Science_MTR/)
+
+> 包含 6 個互動式 Plotly 圖表：缺失值分析、3D 散點圖、數據收集動畫、階層分布圖、平行座標圖、統計檢定力分析。
+
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![Plotly](https://img.shields.io/badge/Plotly-Interactive_Visualization-green.svg)](https://plotly.com/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Analysis-yellow.svg)](https://pandas.pydata.org/)
